@@ -1,0 +1,6 @@
+﻿  Bank system project one.cpp
+I:\Programming part 2\- Programming with Dr. Mohammed Abu-Hadhoud\07 - Algorithms & Problem Solving Level 3\Bank system project one\Bank system project one\Bank system project one.cpp(253,37): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+I:\Programming part 2\- Programming with Dr. Mohammed Abu-Hadhoud\07 - Algorithms & Problem Solving Level 3\Bank system project one\Bank system project one\Bank system project one.cpp(410,37): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned short', possible loss of data
+I:\Programming part 2\- Programming with Dr. Mohammed Abu-Hadhoud\07 - Algorithms & Problem Solving Level 3\Bank system project one\Bank system project one\Bank system project one.cpp(422,57): warning C4227: anachronism used: qualifiers on reference are ignored
+I:\Programming part 2\- Programming with Dr. Mohammed Abu-Hadhoud\07 - Algorithms & Problem Solving Level 3\Bank system project one\Bank system project one\Bank system project one.cpp(437,93): warning C4227: anachronism used: qualifiers on reference are ignored
+  Bank system project one.vcxproj -> I:\Programming part 2\- Programming with Dr. Mohammed Abu-Hadhoud\07 - Algorithms & Problem Solving Level 3\Bank system project one\x64\Debug\Bank system project one.exe

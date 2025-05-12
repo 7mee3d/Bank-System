@@ -7,14 +7,20 @@
 #include <iomanip>
 using namespace std;
 
+#define RUN 1 
+
+//Constants of System 
+
 unsigned short int const kZERO{ 0 };
 unsigned short int const kONE{ 1 };
 unsigned short int const kNUMBER_TAB = { 2 };
 unsigned short int const kNUMBER_LINE = { 1 };
 unsigned short int const kNUMBER_ASCII_SPACE  = { 32 };
 
+//File name 
 string const kFILE_NAME = "Information_Client.txt";
 
+// Constants of Deparment System 
 enum enChoiseDepartmentBank {
 
     kSHOW_INFORMATION_CLIENT_SECTION = 1 , 
@@ -25,6 +31,8 @@ enum enChoiseDepartmentBank {
     kEXIT = 6 
 
 };
+
+// Inforamtion Every Client in system bank 
 struct stInformationClientBank {
 
     //Records ( Data ) 
@@ -240,7 +248,7 @@ char readCharacter(string const kMESSAGE) {
 
 char convertCharacterUpperToLower(char const kCHARACTER ) {
 
-    return kCHARACTER | ::kNUMBER_ASCII_SPACE;
+    return (kCHARACTER | ::kNUMBER_ASCII_SPACE);
 
 }
 string readText(string const kMESSAGE) {
@@ -457,7 +465,7 @@ void functionAddNewClient(vector<stInformationClientBank>& vectorInformationClie
     stInformationClientBank infoClient;
     char choise{ 'Y' };
 
-    while (choise == 'Y' || choise == 'y') {
+    while (convertCharacterUpperToLower(choise) == 'y') {
 
         clearSecreenOnDetailes();
         headerDepartmentAddNewClient();
@@ -472,7 +480,7 @@ void functionAddNewClient(vector<stInformationClientBank>& vectorInformationClie
             for (const auto& client : vectorInformationClient) {
                 if (client.accountNumber == accountNumber) {
                     exitsAccountNumber = true;
-                    cout << FunctionPrintTabs(::kNUMBER_TAB) << "Account already exists, try again.\n";
+                    cout << FunctionPrintTabs(::kNUMBER_TAB) << "Aleart !!!! Account already exists, try again." <<FunctionCreateNewLine(::kONE);
                     break;
                 }
             }
@@ -499,10 +507,13 @@ void functionAddNewClient(vector<stInformationClientBank>& vectorInformationClie
 
 void FunctionShowClientLists(string const kFILE_NAME) {
 
+
     vector<stInformationClientBank>  infoClient;
+
     infoClient = loadDataFromFile(kFILE_NAME, "#//#");
 
     unsigned short int numberClient = infoClient.size();
+
     HeaderTabBarSectionShowClientList(numberClient);
 
     for (stInformationClientBank const& client : infoClient) {
@@ -584,7 +595,6 @@ void FunctionDeleteClient(vector<stInformationClientBank>& kINFO_CLIENT) {
 
     stInformationClientBank  kINFO_ONE_CLIENT;
 
-
     if (isFoundAccountNumberInFile(accountNumber, kINFO_ONE_CLIENT)) {
 
         printInformationEveryClient(kINFO_ONE_CLIENT);
@@ -611,11 +621,11 @@ void FunctionDeleteClient(vector<stInformationClientBank>& kINFO_CLIENT) {
 
 void updateClientDirct(string const kNACCOUNT_NUMBER, vector<stInformationClientBank>& kINFO_CLIENT) {
    
-    for (stInformationClientBank& cli : kINFO_CLIENT) {
-        if (kNACCOUNT_NUMBER == cli.accountNumber) {
+    for (stInformationClientBank& client : kINFO_CLIENT) {
+        if (kNACCOUNT_NUMBER == client.accountNumber) {
             stInformationClientBank updatedClient = readEveryClientToUpdateClient();
             updatedClient.accountNumber = kNACCOUNT_NUMBER;
-            cli = updatedClient;
+            client = updatedClient;
             break;
         }
     }
@@ -697,19 +707,16 @@ void mainBank() {
         case enChoiseDepartmentBank::kADD_CLIENT_SECTION: 
 
             functionAddNewClient(vectorInformationClient);
-           // vectorInformationClient = loadDataFromFile(::kFILE_NAME);
             break;
 
         case enChoiseDepartmentBank::kDELETE_CLIENT :
 
             FunctionDeleteClient(vectorInformationClient);
-            vectorInformationClient = loadDataFromFile(::kFILE_NAME);
             break;
       
         case enChoiseDepartmentBank::kUPDATE_CLIENT :
 
             FunctionUpdateClient(vectorInformationClient);
-            vectorInformationClient = loadDataFromFile(::kFILE_NAME);
             break;
 
         case enChoiseDepartmentBank::kFIND_CLIENT : 
@@ -735,8 +742,18 @@ void mainBank() {
 int main() {
 
 
-    mainBank();
+    #if RUN
+    void (*START_PROGRAMM_SYSTEM_BANK) (void) = mainBank;
+
+    START_PROGRAMM_SYSTEM_BANK();
+
+    #else
+    cout << "Welcome Bank System (:";
+
+    #endif 
+
     return 0;
+
 }
 
 

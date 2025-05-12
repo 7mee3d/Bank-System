@@ -32,7 +32,7 @@ struct stInformationClientBank {
     string pinCode{ "" };
     string name{ "" };
     string phone{ "" };
-    double accountBalance{ 0.0 };
+    long double accountBalance{ 0.0 };
 
     //Flags 
     bool markDeleteClient = { false };
@@ -206,9 +206,9 @@ int readNumberPositiveInteger(const string kMESSAGE) {
 
 }
 
-double readNumberFloatingPointPositive(const string kMESSAGE) {
+long double readNumberFloatingPointPositive(const string kMESSAGE) {
 
-    double numberToInputUser{ ::kZERO };
+    long double numberToInputUser{ ::kZERO };
 
     do {
 
@@ -239,7 +239,9 @@ char readCharacter(string const kMESSAGE) {
 }
 
 char convertCharacterUpperToLower(char const kCHARACTER ) {
+
     return kCHARACTER | ::kNUMBER_ASCII_SPACE;
+
 }
 string readText(string const kMESSAGE) {
 
@@ -247,6 +249,7 @@ string readText(string const kMESSAGE) {
     cout << FunctionCreateNewLine(::kNUMBER_LINE);
     cout << FunctionPrintTabs(::kNUMBER_TAB) << kMESSAGE;
     getline(cin >> ws, textToInputUser);
+
     return textToInputUser;
 }
 
@@ -254,8 +257,10 @@ stInformationClientBank readAnyClient() {
 
     stInformationClientBank client{ "" };
 
-    cout << FunctionCreateNewLine(::kNUMBER_LINE) << FunctionPrintTabs(::kNUMBER_TAB) << "Enter Account Number : ";
-    getline(cin >> ws, client.accountNumber);
+   // cout << FunctionCreateNewLine(::kNUMBER_LINE) << FunctionPrintTabs(::kNUMBER_TAB) << "Enter Account Number : ";
+   // getline(cin >> ws, client.accountNumber);
+
+
     client.pinCode = readText("Enter Pin Code : ");
     client.name = readText("Enter Name : ");
     client.phone = readText("Enter Phone : ");
@@ -299,7 +304,7 @@ string convertRecordToLine(stInformationClientBank const& kINFO_EVERY_CLIENT, st
 vector<string> splitWord(string  line, string const kDILEMTER = "#//#") {
 
     vector<string> splits;
-    int poisitonWord{ 0 };
+    int poisitonWord{ ::kZERO };
     string newWord{ "" };
 
     while ((poisitonWord = line.find(kDILEMTER)) != string::npos) {
@@ -322,12 +327,15 @@ stInformationClientBank convertLineToRecord(vector <string> Line, string const k
 
     stInformationClientBank client;
 
+    //5--> NUmber size of vector ( information) ( struct )
     if (Line.size() >= 5) {
+
         client.accountNumber = Line[0];
         client.pinCode = Line[1];
         client.name = Line[2];
         client.phone = Line[3];
         client.accountBalance = stod(Line[4]);
+
     }
 
     return client;
@@ -338,6 +346,7 @@ stInformationClientBank convertLineToRecord(vector <string> Line, string const k
 
 //Function storing information in file and vector 
 
+/*
 void loadDataToFile_NewClient(string const kFILE_NAME_INFORMATION_CLIENT, vector<stInformationClientBank>& infoClient, string const kDILEMTER = "#//#") {
 
     fstream fileClient{};
@@ -359,7 +368,7 @@ void loadDataToFile_NewClient(string const kFILE_NAME_INFORMATION_CLIENT, vector
 
     fileClient.close();
 }
-
+*/
 void loadDataToFile(string const kFILE_NAME_INFORMATION_CLIENT, vector<stInformationClientBank>& infoClient, string const kDILEMTER = "#//#"  ) {
 
     fstream fileClient{};
@@ -377,9 +386,10 @@ void loadDataToFile(string const kFILE_NAME_INFORMATION_CLIENT, vector<stInforma
             }
             
         }
+        fileClient.close();
     }
 
-    fileClient.close();
+  
 }
 
 vector<stInformationClientBank> loadDataFromFile(string const kFILE_NAME, string const kDILEMTER = "#//#") {
@@ -446,22 +456,42 @@ void functionAddNewClient(vector<stInformationClientBank>& vectorInformationClie
 
     stInformationClientBank infoClient;
     char choise{ 'Y' };
-    vector<stInformationClientBank> TempvectorInformationClient; 
 
     while (choise == 'Y' || choise == 'y') {
 
         clearSecreenOnDetailes();
         headerDepartmentAddNewClient();
+
+        bool exitsAccountNumber;
+        string accountNumber;
+
+        do {
+            exitsAccountNumber = false;
+            accountNumber = readText("Enter Account Number : ");
+
+            for (const auto& client : vectorInformationClient) {
+                if (client.accountNumber == accountNumber) {
+                    exitsAccountNumber = true;
+                    cout << FunctionPrintTabs(::kNUMBER_TAB) << "Account already exists, try again.\n";
+                    break;
+                }
+            }
+
+        } while (exitsAccountNumber);
+
         infoClient = readAnyClient();
-        TempvectorInformationClient.push_back(infoClient);
-        loadDataToFile_NewClient(::kFILE_NAME, TempvectorInformationClient, "#//#");
+        infoClient.accountNumber = accountNumber;
+
+        vectorInformationClient.push_back(infoClient);
+
         cout << FunctionCreateNewLine(::kNUMBER_LINE);
-        cout << FunctionPrintTabs(::kNUMBER_TAB) << "Client Add Successfully, do you want to add more clients? [Y/N] : ";
+        cout << FunctionPrintTabs(::kNUMBER_TAB) << "Client added successfully. Do you want to add more clients? [Y/N] : ";
         cin >> choise;
-        TempvectorInformationClient.clear(); 
-        
     }
-    vectorInformationClient = loadDataFromFile(::kFILE_NAME);
+
+    // كتابة كل العملاء مرة واحدة بعد الانتهاء
+    loadDataToFile(::kFILE_NAME, vectorInformationClient, "#//#");
+
     footerEverySecreen();
     ButtonGoBackMenu();
 }
@@ -476,7 +506,9 @@ void FunctionShowClientLists(string const kFILE_NAME) {
     HeaderTabBarSectionShowClientList(numberClient);
 
     for (stInformationClientBank const& client : infoClient) {
+
         printInfomationClientOne(client);
+
     }
 
     footerSectionShowClientList();
@@ -544,11 +576,11 @@ void FunctionDeleteClient(vector<stInformationClientBank>& kINFO_CLIENT) {
 
     clearSecreenOnDetailes();
     headerDepartmentFindClientAccordingAN();
-    char answerAreDelete = 'n';
 
+    char answerAreDelete = 'n';
     string accountNumber{ "" };
-    cout << FunctionPrintTabs(::kNUMBER_TAB) << "Enter Account Number : ";
-    getline(cin >> ws, accountNumber);
+    accountNumber = readText("Enter Account Number : ");
+
 
     stInformationClientBank  kINFO_ONE_CLIENT;
 
@@ -594,9 +626,7 @@ void FunctionUpdateClient(vector<stInformationClientBank>& kINFO_CLIENT) {
     headerDepartmentUpdateClient();
 
     string accountNumber{ "" };
-    cout << FunctionPrintTabs(::kNUMBER_TAB) << "Enter Account Number : ";
-    getline(cin >> ws, accountNumber);
-
+    accountNumber = readText("Enter Account Number : ");
     stInformationClientBank  kINFO_ONE_CLIENT;
 
     if (isFoundAccountNumberInFile(accountNumber, kINFO_ONE_CLIENT)) {
@@ -656,6 +686,7 @@ void mainBank() {
         choise = readNumberPositiveInteger("Enter the Choise : ");
 
         enChoiseDepartmentBank choiseDepartment = static_cast<enChoiseDepartmentBank> (choise); 
+
         switch (choiseDepartment) {
 
         case enChoiseDepartmentBank::kSHOW_INFORMATION_CLIENT_SECTION : 
@@ -666,7 +697,7 @@ void mainBank() {
         case enChoiseDepartmentBank::kADD_CLIENT_SECTION: 
 
             functionAddNewClient(vectorInformationClient);
-            vectorInformationClient = loadDataFromFile(::kFILE_NAME);
+           // vectorInformationClient = loadDataFromFile(::kFILE_NAME);
             break;
 
         case enChoiseDepartmentBank::kDELETE_CLIENT :
@@ -692,8 +723,10 @@ void mainBank() {
             return;
 
         default:
-            cout << FunctionPrintTabs(::kNUMBER_TAB) 
-                << "\nInvalid Choice! Please try again.\n";
+
+            cout <<FunctionCreateNewLine(::kNUMBER_LINE + 1 ) <<
+                FunctionPrintTabs(::kNUMBER_TAB) 
+                << "Invalid Choice! Please try again.\n";
             ButtonGoBackMenu();
         }
     }

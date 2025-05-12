@@ -1,4 +1,4 @@
-﻿// Bank System 
+// Bank System 
 
 #include <iostream>
 #include <string>
@@ -11,6 +11,7 @@ unsigned short int const kZERO{ 0 };
 unsigned short int const kONE{ 1 };
 unsigned short int const kNUMBER_TAB = { 2 };
 unsigned short int const kNUMBER_LINE = { 1 };
+unsigned short int const kNUMBER_ASCII_SPACE  = { 32 };
 
 string const kFILE_NAME = "Information_Client.txt";
 
@@ -38,6 +39,7 @@ struct stInformationClientBank {
 
 };
 
+//Function Styling code ( Tabs , Lines  , Clear , button pause ) 
 string FunctionPrintTabs(unsigned const short int kNUMBER_TABS) {
 
     string tab{ "" };
@@ -74,6 +76,11 @@ void ButtonGoBackMenu(void) {
     system("pause>0");
 
 }
+//Ends 
+
+
+
+//Functions Header ( Secreen ) The Welcome the bank 
 
 void HeaderMenuBank(void) {
     cout << FunctionCreateNewLine(::kNUMBER_LINE);
@@ -134,6 +141,30 @@ void headerDepartmentExitProgram(void) {
     cout << FunctionPrintTabs(::kNUMBER_TAB) << "|+                           Exit Programm                      +|\n";
     cout << FunctionPrintTabs(::kNUMBER_TAB) << "|+--------------------------------------------------------------+|\n\n";
 }
+
+void HeaderTabBarSectionShowClientList(unsigned long int numberClient) {
+
+    clearSecreenOnDetailes();
+    cout << FunctionCreateNewLine(::kNUMBER_LINE + ::kONE);
+    cout << FunctionPrintTabs(::kNUMBER_TAB + 3) << "Client list ( " << numberClient << " ) Client(s) " << FunctionCreateNewLine(::kNUMBER_LINE + ::kONE);
+
+    cout << "|+___________________________________________________________________________________________________________________+|" << FunctionCreateNewLine((::kNUMBER_LINE + ::kONE));
+    cout << "|    Account Number    |    Pin Code    |         Client Name                   |       Phone       |    Balance ($)  |" << FunctionCreateNewLine((::kNUMBER_LINE + ::kONE));
+    cout << "|+___________________________________________________________________________________________________________________+|" << FunctionCreateNewLine((::kNUMBER_LINE + ::kONE));
+
+}
+
+void footerSectionShowClientList(void) {
+
+    cout << FunctionCreateNewLine(::kNUMBER_LINE);
+    cout << "|+___________________________________________________________________________________________________________________+|" << FunctionCreateNewLine((::kNUMBER_LINE + ::kONE));
+
+}
+
+// End Function Secreen 
+
+//Function print menu 
+
 void bodyInformationMenu(void) {
 
     cout << FunctionCreateNewLine(::kNUMBER_LINE);
@@ -147,6 +178,10 @@ void bodyInformationMenu(void) {
     footerEverySecreen();
 
 }
+
+//End 
+
+//Function Read Number and String and Character ( and convert Character ) , and readEvery Client of information 
 
 int readNumberPositiveInteger(const string kMESSAGE) {
 
@@ -194,6 +229,18 @@ double readNumberFloatingPointPositive(const string kMESSAGE) {
     return numberToInputUser;
 }
 
+char readCharacter(string const kMESSAGE) {
+
+    char character{ ' ' }; 
+    cout << FunctionCreateNewLine(::kNUMBER_LINE) << FunctionPrintTabs(::kNUMBER_TAB) << kMESSAGE; 
+    cin >> character; 
+
+    return character; 
+}
+
+char convertCharacterUpperToLower(char const kCHARACTER ) {
+    return kCHARACTER | ::kNUMBER_ASCII_SPACE;
+}
 string readText(string const kMESSAGE) {
 
     string textToInputUser{ "" };
@@ -203,7 +250,7 @@ string readText(string const kMESSAGE) {
     return textToInputUser;
 }
 
-stInformationClientBank readEveryClient() {
+stInformationClientBank readAnyClient() {
 
     stInformationClientBank client{ "" };
 
@@ -230,6 +277,11 @@ stInformationClientBank readEveryClientToUpdateClient () {
 
     return client;
 }
+
+//End This reads Function 
+
+
+//Function converting 
 string convertRecordToLine(stInformationClientBank const& kINFO_EVERY_CLIENT, string const kDILEMTER = "#//#") {
 
     string line{ "" };
@@ -281,6 +333,11 @@ stInformationClientBank convertLineToRecord(vector <string> Line, string const k
     return client;
 
 }
+
+//End Function converting 
+
+//Function storing information in file and vector 
+
 void loadDataToFile_NewClient(string const kFILE_NAME_INFORMATION_CLIENT, vector<stInformationClientBank>& infoClient, string const kDILEMTER = "#//#") {
 
     fstream fileClient{};
@@ -347,6 +404,44 @@ vector<stInformationClientBank> loadDataFromFile(string const kFILE_NAME, string
     file.close();
     return infoAllClientInFile;
 }
+
+//end function storing 
+
+
+//Function print One Client Information 
+
+void printInfomationClientOne(stInformationClientBank const& kINFO_CLIENT_ONE) {
+
+
+    cout << "| " << left << setw(21) << kINFO_CLIENT_ONE.accountNumber << "| ",
+        cout << left << setw(15) << kINFO_CLIENT_ONE.pinCode << "| ",
+        cout << left << setw(38) << kINFO_CLIENT_ONE.name << "| ",
+        cout << left << setw(18) << kINFO_CLIENT_ONE.phone << "| ",
+        cout << left << setw(16) << kINFO_CLIENT_ONE.accountBalance << "|";
+    cout << FunctionCreateNewLine(::kNUMBER_LINE);
+
+}
+
+void printInformationEveryClient(stInformationClientBank& const  kCLIENT) {
+
+    cout << FunctionCreateNewLine(::kNUMBER_LINE);
+
+    cout << FunctionCreateNewLine(::kNUMBER_LINE) << FunctionPrintTabs(::kNUMBER_TAB) << "The Following are the Client Details : " << FunctionCreateNewLine(::kNUMBER_LINE + ::kONE);
+
+    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Account Number   : " << kCLIENT.accountNumber << FunctionCreateNewLine(::kNUMBER_LINE);
+    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Pin Code         : " << kCLIENT.pinCode << FunctionCreateNewLine(::kNUMBER_LINE);
+    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Name             : " << kCLIENT.name << FunctionCreateNewLine(::kNUMBER_LINE);
+    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Phone            : " << kCLIENT.phone << FunctionCreateNewLine(::kNUMBER_LINE);
+    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Account Balance  : " << kCLIENT.accountBalance << '$' << FunctionCreateNewLine(::kNUMBER_LINE);
+
+}
+
+
+//End Function Print 
+
+
+// Start Operation Section 
+
 void functionAddNewClient(vector<stInformationClientBank>& vectorInformationClient) {
 
     stInformationClientBank infoClient;
@@ -357,7 +452,7 @@ void functionAddNewClient(vector<stInformationClientBank>& vectorInformationClie
 
         clearSecreenOnDetailes();
         headerDepartmentAddNewClient();
-        infoClient = readEveryClient();
+        infoClient = readAnyClient();
         TempvectorInformationClient.push_back(infoClient);
         loadDataToFile_NewClient(::kFILE_NAME, TempvectorInformationClient, "#//#");
         cout << FunctionCreateNewLine(::kNUMBER_LINE);
@@ -371,36 +466,6 @@ void functionAddNewClient(vector<stInformationClientBank>& vectorInformationClie
     ButtonGoBackMenu();
 }
 
-void HeaderTabBarSectionShowClientList(unsigned long int numberClient) {
-
-    clearSecreenOnDetailes();
-    cout << FunctionCreateNewLine(::kNUMBER_LINE + ::kONE);
-    cout << FunctionPrintTabs(::kNUMBER_TAB + 3)  << "Client list ( " << numberClient << " ) Client(s) " << FunctionCreateNewLine(::kNUMBER_LINE + ::kONE);
-
-    cout << "|+___________________________________________________________________________________________________________________+|" << FunctionCreateNewLine((::kNUMBER_LINE + ::kONE));
-    cout << "|    Account Number    |    Pin Code    |         Client Name                   |       Phone       |    Balance ($)  |" << FunctionCreateNewLine((::kNUMBER_LINE + ::kONE));
-    cout << "|+___________________________________________________________________________________________________________________+|" << FunctionCreateNewLine((::kNUMBER_LINE + ::kONE));
-
-}
-
-void footerSectionShowClientList(void) {
-
-    cout << FunctionCreateNewLine(::kNUMBER_LINE);
-    cout << "|+___________________________________________________________________________________________________________________+|" << FunctionCreateNewLine((::kNUMBER_LINE + ::kONE));
-
-}
-
-void printInfomationClientOne(stInformationClientBank const& kINFO_CLIENT_ONE) {
-
-
-    cout << "| " << left << setw(21) << kINFO_CLIENT_ONE.accountNumber << "| ",
-        cout << left << setw(15) << kINFO_CLIENT_ONE.pinCode << "| ",
-        cout << left << setw(38) << kINFO_CLIENT_ONE.name << "| ",
-        cout << left << setw(18) << kINFO_CLIENT_ONE.phone << "| ",
-        cout << left << setw(16) << kINFO_CLIENT_ONE.accountBalance << "|";
-    cout << FunctionCreateNewLine(::kNUMBER_LINE);
-
-}
 
 void FunctionShowClientLists(string const kFILE_NAME) {
 
@@ -417,22 +482,6 @@ void FunctionShowClientLists(string const kFILE_NAME) {
     footerSectionShowClientList();
     ButtonGoBackMenu();
 }
-
-
-void printInformationEveryClient(stInformationClientBank& const  kCLIENT) {
-
-    cout << FunctionCreateNewLine(::kNUMBER_LINE);
-
-    cout << FunctionCreateNewLine(::kNUMBER_LINE) << FunctionPrintTabs(::kNUMBER_TAB) << "The Following are the Client Details : " << FunctionCreateNewLine(::kNUMBER_LINE+::kONE);
-
-    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Account Number   : " << kCLIENT.accountNumber << FunctionCreateNewLine(::kNUMBER_LINE);
-    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Pin Code         : " << kCLIENT.pinCode << FunctionCreateNewLine(::kNUMBER_LINE);
-    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Name             : " << kCLIENT.name << FunctionCreateNewLine(::kNUMBER_LINE);
-    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Phone            : " << kCLIENT.phone << FunctionCreateNewLine(::kNUMBER_LINE);
-    cout << FunctionPrintTabs(::kNUMBER_TAB) << "- Account Balance  : " << kCLIENT.accountBalance<< '$' << FunctionCreateNewLine(::kNUMBER_LINE);
-
-}
-
 
 bool isFoundAccountNumberInFile(string const kACCOUNT_NUMBER_CLIENT, stInformationClientBank& const  kCLIENT) {
 
@@ -476,6 +525,7 @@ void FunctionFindClient(vector<stInformationClientBank> const& kINFO_CLIENT) {
 
 }
 
+
 bool makeFlagDeleteClient(string const kACCOUNT_NUMBER, vector<stInformationClientBank> & kINFO_CLIENT, stInformationClientBank& client) {
 
     for (stInformationClientBank& cli : kINFO_CLIENT) {
@@ -488,7 +538,9 @@ bool makeFlagDeleteClient(string const kACCOUNT_NUMBER, vector<stInformationClie
     return false; 
 }
 
+
 void FunctionDeleteClient(vector<stInformationClientBank>& kINFO_CLIENT) {
+
 
     clearSecreenOnDetailes();
     headerDepartmentFindClientAccordingAN();
@@ -500,15 +552,13 @@ void FunctionDeleteClient(vector<stInformationClientBank>& kINFO_CLIENT) {
 
     stInformationClientBank  kINFO_ONE_CLIENT;
 
+
     if (isFoundAccountNumberInFile(accountNumber, kINFO_ONE_CLIENT)) {
 
         printInformationEveryClient(kINFO_ONE_CLIENT);
         footerEverySecreen();
 
-        cout << FunctionPrintTabs(::kNUMBER_TAB) << "Are sure you want delete this client ? [Y/N]  : ";
-        cin >> answerAreDelete;
-
-        if (answerAreDelete == 'y' || answerAreDelete == 'Y') {
+        if ((convertCharacterUpperToLower (readCharacter ("Are sure you want delete this client ? [Y/N]  : ")) ==  'y') ) {
 
             makeFlagDeleteClient (accountNumber , kINFO_CLIENT , kINFO_ONE_CLIENT);
             loadDataToFile(::kFILE_NAME, kINFO_CLIENT, "#//#" );
@@ -527,13 +577,21 @@ void FunctionDeleteClient(vector<stInformationClientBank>& kINFO_CLIENT) {
 
 }
 
-
-
+void updateClientDirct(string const kNACCOUNT_NUMBER, vector<stInformationClientBank>& kINFO_CLIENT) {
+   
+    for (stInformationClientBank& cli : kINFO_CLIENT) {
+        if (kNACCOUNT_NUMBER == cli.accountNumber) {
+            stInformationClientBank updatedClient = readEveryClientToUpdateClient();
+            updatedClient.accountNumber = kNACCOUNT_NUMBER;
+            cli = updatedClient;
+            break;
+        }
+    }
+}
 void FunctionUpdateClient(vector<stInformationClientBank>& kINFO_CLIENT) {
 
     clearSecreenOnDetailes();
     headerDepartmentUpdateClient();
-    char answerAreUpdate = 'n';
 
     string accountNumber{ "" };
     cout << FunctionPrintTabs(::kNUMBER_TAB) << "Enter Account Number : ";
@@ -545,26 +603,18 @@ void FunctionUpdateClient(vector<stInformationClientBank>& kINFO_CLIENT) {
         printInformationEveryClient(kINFO_ONE_CLIENT);
         footerEverySecreen();
 
-        cout << FunctionPrintTabs(::kNUMBER_TAB) << "Are sure you want Update this client ? [Y/N]  : ";
-        cin >> answerAreUpdate;
+        if ((convertCharacterUpperToLower(readCharacter("Are sure you want Update this client ? [Y/N]  : ")) == 'y')) {
 
-        if (answerAreUpdate == 'y' || answerAreUpdate == 'Y') {
-
-            for (stInformationClientBank& cli : kINFO_CLIENT) {
-                if (accountNumber == cli.accountNumber) {
-                    stInformationClientBank updatedClient = readEveryClientToUpdateClient();
-                    updatedClient.accountNumber = accountNumber;
-                    cli = updatedClient;
-                    break;
-                }
-            }
-
+            //Operation updateClient 
+            updateClientDirct(accountNumber, kINFO_CLIENT);
+            //Loading after update Client in the file 
             loadDataToFile(::kFILE_NAME, kINFO_CLIENT, "#//#");
+
             cout << FunctionCreateNewLine(::kNUMBER_LINE + ::kONE)
                 << FunctionPrintTabs(::kNUMBER_TAB)
                 << "Client Update Successfully (: ";
 
-            // Reload the data
+            // Reload the data in vector 
             kINFO_CLIENT = loadDataFromFile(::kFILE_NAME);
         }
         cout << FunctionCreateNewLine(::kNUMBER_LINE);
@@ -655,3 +705,36 @@ int main() {
     mainBank();
     return 0;
 }
+
+
+/*
+        *To understand operation section( delete, update, find)
+* 
+Any operation to include Function 
+
+1- clear secreen 
+
+2- Header Section 
+
+
+3- operation --> delete , update 
+
+        The deletion and modification operations on the client
+        Each contains a reading of the account number to search on it, whether to modify or delete
+        , and each operation contains a reading if I enter yes applies the operation to the
+        account number stored inside the file or inside the vector if I pressyes Each function has its own operations
+        , which are shown in each separate function
+        After completing the operations, all changes will be uploaded to the file and then upload
+        all the information stored inside the file in the vector
+        If no is pressed, it does not perform the operation because the user refused 
+        to perform the operation despite having the account number.
+
+
+4- operation find client 
+        print information client is found 
+        not found ( print message : Account number is not found ) 
+
+
+
+
+*/

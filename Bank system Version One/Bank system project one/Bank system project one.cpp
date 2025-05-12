@@ -336,15 +336,18 @@ stInformationClientBank convertLineToRecord(vector <string> Line, string const k
     stInformationClientBank client;
 
     //5--> NUmber size of vector ( information) ( struct )
-    if (Line.size() >= 5) {
-
-        client.accountNumber = Line[0];
-        client.pinCode = Line[1];
-        client.name = Line[2];
-        client.phone = Line[3];
-        client.accountBalance = stod(Line[4]);
-
-    }
+  //  if (Line.size() >= 5) {
+        try {
+            client.accountNumber = Line[0];
+            client.pinCode = Line[1];
+            client.name = Line[2];
+            client.phone = Line[3];
+            client.accountBalance = stod(Line[4]);
+        }
+        catch (...) {
+            cout << "Outing range ";
+        }
+   // }
 
     return client;
 
@@ -477,10 +480,10 @@ void functionAddNewClient(vector<stInformationClientBank>& vectorInformationClie
             exitsAccountNumber = false;
             accountNumber = readText("Enter Account Number : ");
 
-            for (const auto& client : vectorInformationClient) {
-                if (client.accountNumber == accountNumber) {
+            for (const auto& kCLIENT  : vectorInformationClient) {
+                if (kCLIENT.accountNumber == accountNumber) {
                     exitsAccountNumber = true;
-                    cout << FunctionPrintTabs(::kNUMBER_TAB) << "Aleart !!!! Account already exists, try again." <<FunctionCreateNewLine(::kONE);
+                    cout << FunctionPrintTabs(::kNUMBER_TAB) << "Aleart !!!! Account Number [ " << kCLIENT.accountNumber << " ]  already exists, try again." <<FunctionCreateNewLine(::kONE);
                     break;
                 }
             }

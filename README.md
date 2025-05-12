@@ -86,31 +86,31 @@ Client data is displayed in a tabular format using `iomanip` for clean alignment
 
 # 🧪 Sample Workflow
 
-### 1- User runs the program
+**1- User runs the program** 
 
-### 2- Main menu is shown
+**2- Main menu is shown** 
 
-### 3- User selects “Add Client”
+**3- User selects “Add Client”**
 
-### 4- System requests details and saves them to the file
+**4- System requests details and saves them to the file**
 
-### 5- User chooses “Show All Clients”
+**5- User chooses “Show All Clients”**
 
-### 6- Data is retrieved from the file and shown as a table
+**6- Data is retrieved from the file and shown as a table**
 
 ---
 
 # 🔄 Future Enhancements
 
-### 🔐 Add login & admin roles
+**🔐 Add login & admin roles**
 
-### 📈 Track transaction history
+**📈 Track transaction history**
 
-### 📦 Switch to database (SQLite, MySQL)
+**📦 Switch to database (SQLite, MySQL)**
 
-### 🖥 GUI with Qt or Web-based frontend
+**🖥 GUI with Qt or Web-based frontend**
 
-### 📊 Export reports to CSV or PDF
+**📊 Export reports to CSV or PDF**
 
 ---
 

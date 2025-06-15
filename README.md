@@ -103,9 +103,126 @@ Welcome to the **Bank Management System** — a powerful, console-based C++ appl
 
 ---
 
-## 📸 Screenshots (Optional)
+## 📸 Screens Bank System 
 
-![Program Interface](images/screenshot.png)
+## 📸 Login Secreen 
+
+![Image](https://github.com/user-attachments/assets/2b63ddec-aa79-4a7f-982c-684d0cf28f99)
+
+---
+## 📸 Main menu Bank Secreen 
+
+![Image](https://github.com/user-attachments/assets/34165e66-1b79-4349-ae2a-c2e9e2f6f3dd)
+
+---
+## 📸 Option One [ Show Cleints List ] 
+
+![Image](https://github.com/user-attachments/assets/ae2bb697-5ec7-46cf-8e19-7d317556cf80)
+
+---
+## 📸 Option Two [ Add new client ] 
+![Image](https://github.com/user-attachments/assets/8aa162f2-e6c3-4f44-858c-b5da97c1edd1)
+
+![Image](https://github.com/user-attachments/assets/e6c0b663-259d-48ac-8c31-e0b53ee19010)
+
+---
+## 📸 Option Three [ Delete Cleint according account number ] 
+
+![Image](https://github.com/user-attachments/assets/64aec87d-9789-4377-b251-ea39e45ad9e3)
+![Image](https://github.com/user-attachments/assets/d2b0065e-3db1-41b6-a3b3-9dcb4fb63f4d)
+
+---
+## 📸 Option Four [ Update Cleint according account number ] 
+
+![Image](https://github.com/user-attachments/assets/d9b284f3-c963-4f71-8fd7-4767c88eb5c6) 
+![Image](https://github.com/user-attachments/assets/0c6809f3-7670-4a2a-b7a2-91d80621b0c3)
+
+---
+
+## 📸 Option Five [ Find client according account number ] 
+
+![Image](https://github.com/user-attachments/assets/67010fde-f8b2-4979-8198-b009e30f836d) 
+
+![Image](https://github.com/user-attachments/assets/7e320c32-10bb-4f8a-8b1a-63dc4eb526e4)
+
+---
+
+## 📸 Option six [ Transactions ] 
+
+### Main menu secreen Transactions . 
+
+![Image](https://github.com/user-attachments/assets/bf4fe58e-707c-456b-9a78-011f43c8c69a)
+
+### 📸 Option one Transaction [ Deposit Opertion ] 
+
+![Image](https://github.com/user-attachments/assets/89012189-c0f1-4d20-a649-98eaa079004e) 
+
+![Image](https://github.com/user-attachments/assets/1079c64b-e602-44df-863e-cec9e3bab647) 
+
+### 📸 Option Two Transaction [ Withdraw Opertion ] 
+
+![Image](https://github.com/user-attachments/assets/5bb1964e-b471-42e9-a8e4-48928fb7adeb) 
+
+![Image](https://github.com/user-attachments/assets/9a84eb00-613f-4fb7-a3d7-4179960cede7)
+
+![Image](https://github.com/user-attachments/assets/3944308f-4042-40e0-9064-bbacdda6aed6)
+
+### 📸 Option Three Transaction [ Show All Balance Client ] 
+
+![Image](https://github.com/user-attachments/assets/3facba97-cf0c-400f-99e3-2c8496acca73) 
+
+---
+
+## 📸 Option Seven [ Mange Users ] 
+
+## 📸  Main Menu Mange Users 
+
+![Image](https://github.com/user-attachments/assets/18934398-df7a-4c5c-b125-edc2f6931c3a)
+
+### 📸 Option One Mange Users [ Show All Users ] 
+
+![Image](https://github.com/user-attachments/assets/c5a1ffa6-584b-4537-b8e5-635c2cb48e0b)
+
+### 📸 Option Two Mange Users [ Add new user ] 
+
+![Image](https://github.com/user-attachments/assets/f10965b5-b302-449f-8d1e-b6becdb27b95) 
+
+![Image](https://github.com/user-attachments/assets/a00a346b-9fc3-4941-9839-d9e244730dcf)
+
+![Image](https://github.com/user-attachments/assets/59f0c397-f219-42d7-8a6d-14cc23868df3)
+
+![Image](https://github.com/user-attachments/assets/00f9c4c8-29e7-41ae-8697-c503eec27b52)
+
+### 📸 Option Three Mange Users [ Delete User according username ] 
+
+![Image](https://github.com/user-attachments/assets/33b9c229-3620-4f2d-88aa-0b518547e2fa)
+
+![Image](https://github.com/user-attachments/assets/d6a3e08e-9e1f-4abe-8ca4-f883f4c23e65)
+
+![Image](https://github.com/user-attachments/assets/8311df42-fe77-44a4-aa4c-1192a3321da3)
+
+### 📸 Option Forue Mange Users [ Update User according username ] 
+
+![Image](https://github.com/user-attachments/assets/814be4dd-11ed-449a-a119-bb26c68700f9)
+
+![Image](https://github.com/user-attachments/assets/f0804c86-0917-4dec-b849-37d130a8c4e2)
+
+### 📸 Option One Mange User [ Show all users after updateing and delete users ] 
+
+![Image](https://github.com/user-attachments/assets/81eb9665-8cd3-4e3c-98d7-81c603b5d90b)
+
+### 📸 Option Five Mange Users [ Find User according username ] 
+
+![Image](https://github.com/user-attachments/assets/bf86ed1e-0730-4a39-8536-a8a1183e8946)
+
+![Image](https://github.com/user-attachments/assets/301d963a-ab47-4e19-8ec7-3a8ea8277dd7)
+
+---
+## 📸 Option Eight [ Logout Bank ] 
+
+![Image](https://github.com/user-attachments/assets/c7b5b7e1-5a35-479b-b9ed-79f8e503f04c)
+
+---
 
 
 ---
@@ -117,10 +234,16 @@ Feel free to submit **Issues** or **Pull Requests** on GitHub — your contribut
 
 ---
 
-## 📜 License
+# 👨💻 Author
 
-This project is **open-source** and free for academic, educational, and personal use.  
-Use it, modify it, and share it — no strings attached! 🎓
+**Ahmed Jehad Ahmed**  
+
+
+🔗 [GitHub Profile](https://github.com/7mee3d)
+
+📧 [Email Contact](mailto:enginnerahemdjehad2004@gmail.com)
+
+
 
 ---
 

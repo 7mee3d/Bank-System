@@ -6,13 +6,13 @@ Welcome to the **Bank Management System** — a powerful, console-based C++ appl
 
 ## ✨ Features You'll Love
 
-### 👥 Customer Management
-- ➕ Add new customers effortlessly  
-- ❌ Delete customers securely  
-- ✏️ Update customer details anytime  
-- 🔍 Search for customers quickly  
-- 📋 View a detailed list of all customers  
-- Each customer record stores: **Account Number, PIN, Name, Phone, Balance, and Deletion Status**
+### 👥 Client Management
+- ➕ Add new client effortlessly  
+- ❌ Delete client securely  
+- ✏️ Update client details anytime  
+- 🔍 Search for client quickly  
+- 📋 View a detailed list of all clients  
+- Each client record stores: **Account Number, PIN, Name, Phone, Balance, and Deletion Status**
 
 ### 💰 Banking Transactions
 - 💸 Deposit and withdraw funds with ease  
@@ -20,7 +20,7 @@ Welcome to the **Bank Management System** — a powerful, console-based C++ appl
 - 🔐 Transaction operations are permission-controlled to keep things safe!
 
 ### 👨‍💻 User Management
-- 👤 Add, remove, update, and search users (employees/admins)  
+- 👤 Add, remove, update, and search users (Users/admins)  
 - 🔑 Assign and modify granular permissions per user  
 - 👀 View all users and their access levels at a glance
 

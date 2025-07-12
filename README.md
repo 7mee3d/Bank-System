@@ -1,6 +1,7 @@
 # 🏦 Bank Management System
 
-Welcome to the **Bank Management System** — a powerful, console-based C++ application designed to make managing bank customers, users, and transactions easier, safer, and more efficient! 🎉 Whether you're learning, prototyping, or running a small-scale banking operation, this system has got you covered with a clean interface, flexible permissions, and reliable data storage.
+Welcome to the **Bank Management System** — a powerful, console-based C++ application designed to make managing bank customers, users, and transactions easier, safer, and more efficient! 🎉 Whether you're learning, prototyping, or running a small-scale banking operation, this system has got you covered with a clean interface, flexible permissions, and reliable data storage ,
+This Project Using Paradigm (` POP - Procedure-Oriented Programming Or Functional programming `) .
 
 ---
 

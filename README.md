@@ -225,7 +225,17 @@ This Project Using Paradigm (` POP - Procedure-Oriented Programming Or Functiona
 
 ---
 
+## 📛 Why the Name "BankFlow"?
+The project was named BankFlow because it reflects the seamless and organized flow of banking operations. The system provides a fully integrated experience for managing all essential banking tasks in a connected and logical sequence, much like a "flow" of steps and procedures executed by each customer or employee within the banking system.
 
+The name BankFlow represents:
+
+🔄 A flexible sequence of operations – such as account creation, deposit, withdrawal, transfer, data updates, and more – all embedded in a smooth and logical flow.
+
+
+🔐 A secure and user-friendly structure for managing sensitive banking data with clarity and efficiency.
+
+The name does not only suggest that this is a banking system – it emphasizes that every part of it works in harmony, flowing together within one unified system. That’s the core of (` BankFlow `).
 ---
 
 ## 🤝 Contributing
